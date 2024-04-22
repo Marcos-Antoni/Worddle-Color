@@ -1,0 +1,37 @@
+---
+import Header from "components/astro/Header.astro";
+import Container from "components/react/Container";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Container client:load>
+      <Header />
+      <slot />
+    </Container>
+  </body>
+
+  <style is:global>
+    * {
+      font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+    #loom-companion-mv3 {
+      display: none;
+    }
+  </style>
+</html>

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "E:/Programacion/Personal/wordle-color",
+    "paths": {
+      "components/*": [
+        "./src/components/*"
+      ],
+      "layouts/*": [
+        "./src/layouts/*"
+      ],
+      "store/*": [
+        "./src/store/*"
+      ],
+      "test/*": [
+        "./test/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "astro/tsconfigs/strict"
+}
