@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useColorStore } from "store/colorStore";
+import { useColorStore } from "store/colorStore.ts";
 
 interface LetterSpacesProps {
   col?: number;

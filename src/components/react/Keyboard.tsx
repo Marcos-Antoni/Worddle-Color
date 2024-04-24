@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
 import Delete from "components/SVG/Delete.tsx";
-import { useColorStore } from "store/colorStore";
+import { useColorStore } from "store/colorStore.ts";
 
 const Keyboard = () => {
   const { setReply, btnBg } = useColorStore();

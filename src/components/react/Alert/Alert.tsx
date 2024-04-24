@@ -1,4 +1,4 @@
-import { useColorStore } from "store/colorStore";
+import { useColorStore } from "store/colorStore.ts";
 import Exit from "components/SVG/Exit";
 
 type Props = {

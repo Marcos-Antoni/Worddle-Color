@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useColorStore } from "store/colorStore";
+import { useColorStore } from "store/colorStore.ts";
 
 import "components/css/container.css";
 
