@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import { useColorStore } from "store/colorStore.ts";
+import { useColorStore } from "../../store/colorStore.ts";
 
-import "components/css/container.css";
+import "../css/container.css";
 
 interface FundProps {
   children: React.ReactNode;

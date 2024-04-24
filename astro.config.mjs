@@ -6,17 +6,17 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    resolve: {
-      alias: {
-        components: "/src/components",
-        layouts: "/src/layouts",
-        test: "/test",
-        store: "/src/store"
-      }
-    }
-  },
+  // vite: {
+  //   resolve: {
+  //     alias: {
+  //       components: "/src/components",
+  //       layouts: "/src/layouts",
+  //       test: "/test",
+  //       store: "/src/store"
+  //     }
+  //   }
+  // },
   integrations: [tailwind(), react()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
 });

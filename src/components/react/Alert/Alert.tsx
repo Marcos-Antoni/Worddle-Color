@@ -1,5 +1,5 @@
-import { useColorStore } from "store/colorStore.ts";
-import Exit from "components/SVG/Exit";
+import { useColorStore } from "../../../store/colorStore.ts";
+import Exit from "../../SVG/Exit";
 
 type Props = {
   title: string;

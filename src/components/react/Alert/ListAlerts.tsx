@@ -1,4 +1,4 @@
-import { useColorStore } from "store/colorStore.ts";
+import { useColorStore } from "../../../store/colorStore.ts";
 import Statistics from "./Statistics";
 import Configuration from "./Configuration";
 import GameOver from "./GameOver";
