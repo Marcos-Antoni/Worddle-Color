@@ -7,15 +7,15 @@ interface LetterSpacesProps {
 }
 
 const LetterSpaces = ({ col = 6, row = 6 }: LetterSpacesProps) => {
-  const [colArray, setcolArray] = useState<number[]>([
-    ...Array(col).keys(),
-  ]);
-  const [rowArray, setrowArray] = useState<number[]>([
-    ...Array(row).keys(),
-  ]);
+  // States
+  const [colArray, setcolArray] = useState([...Array(col).keys()]);
+  const [rowArray, setrowArray] = useState([...Array(row).keys()]);
+  const [colorArray, setColorArray] = useState<string[][]>([]);
 
-  const { reply, color } = useColorStore();
+  const { reply, color, bg, setBtnBg, setRestart, time } =
+    useColorStore();
 
+  // Functions
   const funColor = (arrayStryng: string[]) => {
     const str = arrayStryng.join("");
     if (str.length < 6) {
@@ -24,10 +24,63 @@ const LetterSpaces = ({ col = 6, row = 6 }: LetterSpacesProps) => {
     return `#${str}`;
   };
 
+  const funGameMode = () => {
+    return funClassicMode();
+  };
+
+  const funClassicMode = () => {
+    const yellow = "#ecc40f";
+    const green = "#6aaa64";
+    const gray = "#787c7e";
+
+    const colorCor = color;
+    const colorRes = reply[bg];
+    const colorArray: string[] = [];
+
+    for (let i = 0; i < colorRes.length; i++) {
+      if (colorRes[i] === colorCor[i + 1]) {
+        colorArray.push(green);
+        setBtnBg(colorRes[i], green);
+      } else if (colorCor.includes(colorRes[i])) {
+        colorArray.push(yellow);
+        setBtnBg(colorRes[i], yellow);
+      } else {
+        colorArray.push(gray);
+        setBtnBg(colorRes[i], gray);
+      }
+    }
+
+    setColorArray((prev) => [...prev, colorArray]);
+  };
+
+  // useEffect
   useEffect(() => {
     setcolArray([...Array(col).keys()]);
     setrowArray([...Array(row).keys()]);
   }, [col, row]);
+
+  useEffect(() => {
+    if (bg === -1) return;
+    funGameMode();
+  }, [bg]);
+
+  useEffect(() => {
+    console.log(color);
+
+    if (`#${reply?.[bg]?.join("")}` === color) {
+      setTimeout(() => {
+        setRestart(1);
+        setColorArray([]);
+      }, time + 1000);
+
+      return;
+    }
+
+    if (colorArray.length < col) return;
+
+    setRestart(3);
+    setColorArray([]);
+  }, [colorArray]);
 
   return (
     <div>
@@ -36,11 +89,13 @@ const LetterSpaces = ({ col = 6, row = 6 }: LetterSpacesProps) => {
           {rowArray.map((j) => (
             <li
               key={`li-${i}-${j}`}
-              className="flex items-center justify-center text-[2rem] h-[60px] w-[60px] border-2 m-1 font-bold bg-white	"
+              className="flex items-center justify-center text-[2rem] h-[60px] w-[60px] border-2 m-1 font-bold bg-white transition"
               style={{
                 boxShadow: `0 0 10px ${
                   reply[i] ? funColor(reply[i]) : "#00000000"
                 }`,
+                backgroundColor: colorArray[i]?.[j] || "#FFFFFF",
+                color: bg >= i ? "#fff" : "#000",
               }}>
               {reply[i]?.[j] ? reply[i][j] : ""}
             </li>

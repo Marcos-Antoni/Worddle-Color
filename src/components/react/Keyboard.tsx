@@ -4,7 +4,7 @@ import Delete from "components/SVG/Delete.tsx";
 import { useColorStore } from "store/colorStore";
 
 const Keyboard = () => {
-  const { setReply } = useColorStore();
+  const { setReply, btnBg } = useColorStore();
 
   const nav = useRef<HTMLElement>(null);
 
@@ -52,7 +52,11 @@ const Keyboard = () => {
           {row.map((col, index) => (
             <button
               key={`${index}-${col}`}
-              className="h-[60px] min-w-[45px] bg-[#d3d6da] px-3 rounded-md text-[#1a1a1b]  font-bold uppercase text-sm"
+              className="h-[60px] min-w-[45px] px-3 rounded-md font-bold uppercase text-sm"
+              style={{
+                color: btnBg[col] ? "#fff" : "#1a1a1b",
+                backgroundColor: btnBg[col] || "#d3d6da",
+              }}
               onClick={() => {
                 setReply(col);
               }}>

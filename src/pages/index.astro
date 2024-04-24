@@ -2,11 +2,13 @@
 import Layout from "layouts/Layout.astro";
 import LetterSpaces from "components/react/LetterSpaces";
 import Keyboard from "components/react/Keyboard";
+import ListAlerts from "components/react/Alert/ListAlerts";
 ---
 
 <Layout title="Welcome to Astro.">
   <LetterSpaces client:load />
   <Keyboard client:load />
+  <ListAlerts client:only />
 </Layout>
 
 <style></style>

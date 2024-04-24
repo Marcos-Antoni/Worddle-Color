@@ -8,7 +8,7 @@ interface FundProps {
 }
 
 const Container = ({ children }: FundProps) => {
-  const { color, bg, reply } = useColorStore();
+  const { color, bg, reply, time } = useColorStore();
   const [bgStyle, setBgStyle] = useState({});
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -21,9 +21,7 @@ const Container = ({ children }: FundProps) => {
   }, [color]);
 
   useEffect(() => {
-    if (bg <= -1) {
-      return;
-    }
+    if (bg <= -1) return;
 
     if (containerRef.current) {
       containerRef.current.style.setProperty(
@@ -38,7 +36,7 @@ const Container = ({ children }: FundProps) => {
             `#fff`
           );
         }
-      }, 2000);
+      }, time);
     }
   }, [bg]);
 

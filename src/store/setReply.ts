@@ -1,32 +1,35 @@
+import setSend from "./setSend";
+import type { ColorStore, ColorStoreActions } from "./colorStore";
+
 type setReplyType = (
   button: string,
-  useReply: string[][],
-  useBg: number
+  store: ColorStore & ColorStoreActions
 ) => { reply: string[][] };
 
+interface ObjetProps {
+  editable: string[][];
+  lastRow: number;
+  lastCol: number;
+  button: string;
+  store: ColorStore & ColorStoreActions;
+}
+
 interface ActionsProps {
-  [key: string]: (
-    editable: string[][],
-    lastRow: number,
-    lastCol: number,
-    button: string
-  ) => [string[][], number] | [string[][]];
+  [key: string]: ({}: ObjetProps) =>
+    | [string[][], number]
+    | [string[][]];
 }
 
 const actions: ActionsProps = {
-  enviar: (editable, lastRow, lastCol) => {
-    if (lastCol === 6) {
-      editable[lastRow + 1] = [];
-      return [editable, 1];
-    } else {
-      return [editable];
-    }
-  },
-  borrar: (editable, lastRow) => {
+  enviar: ({ editable, lastRow, lastCol, store }) =>
+    setSend({ editable, lastRow, lastCol, store }),
+
+  borrar: ({ editable, lastRow }) => {
     editable[lastRow] = editable[lastRow].slice(0, -1);
     return [editable];
   },
-  default: (editable, lastRow, lastCol, button) => {
+
+  default: ({ editable, lastRow, lastCol, button }) => {
     if (lastCol === 6) {
       return [editable];
     } else {
@@ -36,18 +39,24 @@ const actions: ActionsProps = {
   },
 };
 
-const SetReply: setReplyType = (button, useReply, useBg) => {
-  let editable = [...useReply];
-  const lastRow = useReply.length - 1;
-  const lastCol = useReply[lastRow]?.length;
+const SetReply: setReplyType = (button, store) => {
+  let editable = [...store.reply];
+  const lastRow = store.reply.length - 1;
+  const lastCol = store.reply[lastRow]?.length;
 
   const action = actions[button] || actions.default;
 
-  const [reply, bg] = action(editable, lastRow, lastCol, button);
+  const [reply, bg] = action({
+    editable,
+    lastRow,
+    lastCol,
+    button,
+    store,
+  });
 
   return {
     reply,
-    bg: bg ? useBg + bg : useBg,
+    bg: bg ? bg + store.bg : store.bg,
   };
 };
 
