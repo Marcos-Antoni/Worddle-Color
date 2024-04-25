@@ -17,7 +17,7 @@ export interface ColorStoreActions {
   setReply: (button: string) => void;
   setBtnBg: (button: string, color: string) => void;
   setAlert: (alert: number) => void;
-  setRestart: (alert: number) => void;
+  setRestart: () => void;
 }
 
 export const useColorStore = create<ColorStore & ColorStoreActions>(
@@ -26,7 +26,7 @@ export const useColorStore = create<ColorStore & ColorStoreActions>(
     reply: [[]],
     bg: -1,
     btnBg: {},
-    alert: 0,
+    alert: 1,
     time: 2000,
 
     setColor: (newNum) => set(() => ({ color: SetColor(newNum) })),
@@ -38,6 +38,6 @@ export const useColorStore = create<ColorStore & ColorStoreActions>(
 
     setAlert: (alert) => set(() => ({ alert })),
 
-    setRestart: (alert) => set((e) => setRestart(e, alert)),
+    setRestart: () => set((e) => setRestart(e)),
   })
 );

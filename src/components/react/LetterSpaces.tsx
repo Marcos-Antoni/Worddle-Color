@@ -12,7 +12,7 @@ const LetterSpaces = ({ col = 6, row = 6 }: LetterSpacesProps) => {
   const [rowArray, setrowArray] = useState([...Array(row).keys()]);
   const [colorArray, setColorArray] = useState<string[][]>([]);
 
-  const { reply, color, bg, setBtnBg, setRestart, time } =
+  const { reply, color, bg, setBtnBg, setRestart, time, setAlert } =
     useColorStore();
 
   // Functions
@@ -66,19 +66,18 @@ const LetterSpaces = ({ col = 6, row = 6 }: LetterSpacesProps) => {
 
   useEffect(() => {
     console.log(color);
+    if (colorArray.length === 0) return;
 
     if (`#${reply?.[bg]?.join("")}` === color) {
-      setTimeout(() => {
-        setRestart(1);
-        setColorArray([]);
-      }, time + 1000);
+      setAlert(1);
+      setColorArray([]);
 
       return;
     }
 
     if (colorArray.length < col) return;
 
-    setRestart(3);
+    setAlert(3);
     setColorArray([]);
   }, [colorArray]);
 

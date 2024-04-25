@@ -1,17 +1,16 @@
 import type { ColorStore, ColorStoreActions } from "./colorStore";
 
 type setRestartProps = (
-  store: ColorStore & ColorStoreActions,
-  alert: number
+  store: ColorStore & ColorStoreActions
 ) => Omit<ColorStore, "color" | "time">;
 
-const setRestart: setRestartProps = (store, alert) => {
+const setRestart: setRestartProps = (store) => {
   store.setColor();
   return {
     reply: [[]],
     bg: -1,
     btnBg: {},
-    alert,
+    alert: 0,
   };
 };
 

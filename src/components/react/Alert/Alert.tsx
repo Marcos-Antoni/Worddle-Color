@@ -4,9 +4,14 @@ import Exit from "../../SVG/Exit";
 type Props = {
   title: string;
   children: React.ReactNode;
+  funExit?: () => void;
 };
 
-export default function Alert({ title, children }: Props) {
+export default function Alert({
+  title,
+  children,
+  funExit = () => {},
+}: Props) {
   const { setAlert } = useColorStore();
 
   return (
@@ -15,12 +20,17 @@ export default function Alert({ title, children }: Props) {
         <div className="w-full flex justify-end">
           <span
             className="fill-[#878a8c] cursor-pointer hover:fill-[#000000] transition-all duration-300 ease-in-out"
-            onClick={() => setAlert(0)}>
+            onClick={() => {
+              setAlert(0);
+              funExit();
+            }}>
             <Exit />
           </span>
         </div>
         <div className="w-full h-auto">
-          <h3 className="text-center text-xl font-bold">{title}</h3>
+          <h3 className="text-center text-xl font-bold mb-[20px]">
+            {title}
+          </h3>
           {children}
         </div>
       </div>
