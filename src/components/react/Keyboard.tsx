@@ -44,7 +44,7 @@ const Keyboard = () => {
         e.preventDefault();
         funKeyDown(key);
       }}
-      className="focus:outline-none">
+      className="focus:outline-none w-full">
       {hexadecimal.map((row, index) => (
         <div
           key={index}
@@ -52,7 +52,7 @@ const Keyboard = () => {
           {row.map((col, index) => (
             <button
               key={`${index}-${col}`}
-              className="sm:h-[60px] sm2:h-[45px] h-[40px] sm:min-w-[45px] sm2:min-w-[30px] min-w-[25px] sm:px-3 px-1.5 rounded-md font-bold uppercase sm:text-sm text-xs"
+              className="sm:h-[60px] h-[50px] sm:min-w-[45px] min-w-[8.75%]  sm:px-3 px-1.5 rounded-md font-bold uppercase sm:text-sm text-xs"
               style={{
                 color: btnBg[col] ? "#fff" : "#1a1a1b",
                 backgroundColor: btnBg[col] || "#d3d6da",
