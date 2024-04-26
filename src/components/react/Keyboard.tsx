@@ -48,11 +48,11 @@ const Keyboard = () => {
       {hexadecimal.map((row, index) => (
         <div
           key={index}
-          className="flex justify-center gap-[10px] my-[10px]">
+          className="flex justify-center sm:gap-[10px] gap-[5px] my-[10px]">
           {row.map((col, index) => (
             <button
               key={`${index}-${col}`}
-              className="h-[60px] min-w-[45px] px-3 rounded-md font-bold uppercase text-sm"
+              className="sm:h-[60px] sm2:h-[45px] h-[40px] sm:min-w-[45px] sm2:min-w-[30px] min-w-[25px] sm:px-3 px-1.5 rounded-md font-bold uppercase sm:text-sm text-xs"
               style={{
                 color: btnBg[col] ? "#fff" : "#1a1a1b",
                 backgroundColor: btnBg[col] || "#d3d6da",

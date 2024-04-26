@@ -89,7 +89,7 @@ const LetterSpaces = () => {
           {rowArray.map((j) => (
             <li
               key={`li-${i}-${j}`}
-              className="flex items-center justify-center text-[2rem] h-[60px] w-[60px] border-2 m-1 font-bold bg-white transition"
+              className="flex items-center justify-center sm:text-[2rem] text-[1.5rem] sm:h-[60px] h-[40px] sm:w-[60px] w-[40px] border-2 m-1 font-bold bg-white transition"
               style={{
                 boxShadow: `0 0 10px ${
                   reply[i] ? funColor(reply[i]) : "#00000000"

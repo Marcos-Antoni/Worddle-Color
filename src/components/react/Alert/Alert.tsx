@@ -16,7 +16,7 @@ export default function Alert({
 
   return (
     <div className="absolute flex justify-center items-center w-full h-full bg-[#00000070]">
-      <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-96">
+      <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-4 sm:w-96 w-[90%]">
         <div className="w-full flex justify-end">
           <span
             className="fill-[#878a8c] cursor-pointer hover:fill-[#000000] transition-all duration-300 ease-in-out"
