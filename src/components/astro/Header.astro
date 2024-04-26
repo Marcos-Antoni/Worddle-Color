@@ -2,26 +2,27 @@
 import Rating from "../SVG/Rating.astro";
 import Configuration from "../SVG/Configuration.astro";
 import Interrogation from "../SVG/Interrogation.astro";
+import Btn from "../react/Btn";
 ---
 
-<header class="flex justify-center bg-[#fff]">
+<header class="flex justify-center w-full bg-[#fff]">
   <div
     class="flex items-center h-[51px] gap-[14px] border-b-[1px] border-[#d3d6da]">
-    <button class="fill-[#878a8c]">
+    <a class="fill-[#878a8c]" href="/rules">
       <Interrogation />
-    </button>
+    </a>
 
     <h1
       class="font-bold text-3xl tracking-widest uppercase pr-[38px] pl-[50px]">
       Wordel Color
     </h1>
 
-    <button class="fill-[#878a8c]">
+    <Btn alert={1} client:load>
       <Rating />
-    </button>
+    </Btn>
 
-    <button class="fill-[#878a8c]">
+    <Btn alert={2} client:load>
       <Configuration />
-    </button>
+    </Btn>
   </div>
 </header>

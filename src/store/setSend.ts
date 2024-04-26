@@ -11,8 +11,13 @@ type setSendProps = ({}: ObjetSendProps) =>
   | [string[][], number]
   | [string[][]];
 
-const setSend: setSendProps = ({ editable, lastRow, lastCol }) => {
-  if (lastCol === 6) {
+const setSend: setSendProps = ({
+  editable,
+  lastRow,
+  lastCol,
+  store,
+}) => {
+  if (lastCol === store.row) {
     editable[lastRow + 1] = [];
     return [editable, 1];
   } else return [editable];

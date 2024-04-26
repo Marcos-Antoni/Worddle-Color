@@ -29,8 +29,8 @@ const actions: ActionsProps = {
     return [editable];
   },
 
-  default: ({ editable, lastRow, lastCol, button }) => {
-    if (lastCol === 6) {
+  default: ({ editable, lastRow, lastCol, button, store }) => {
+    if (lastCol === store.row) {
       return [editable];
     } else {
       editable[lastRow][lastCol] = button;

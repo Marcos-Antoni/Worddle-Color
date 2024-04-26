@@ -10,6 +10,8 @@ export interface ColorStore {
   btnBg: Record<string, null | string>;
   alert: number;
   time: number;
+  row: number;
+  col: number;
 }
 
 export interface ColorStoreActions {
@@ -18,6 +20,9 @@ export interface ColorStoreActions {
   setBtnBg: (button: string, color: string) => void;
   setAlert: (alert: number) => void;
   setRestart: () => void;
+
+  setRow: (row: number) => void;
+  setCol: (col: number) => void;
 }
 
 export const useColorStore = create<ColorStore & ColorStoreActions>(
@@ -26,8 +31,10 @@ export const useColorStore = create<ColorStore & ColorStoreActions>(
     reply: [[]],
     bg: -1,
     btnBg: {},
-    alert: 1,
+    alert: 0,
     time: 2000,
+    row: 6,
+    col: 6,
 
     setColor: (newNum) => set(() => ({ color: SetColor(newNum) })),
 
@@ -39,5 +46,8 @@ export const useColorStore = create<ColorStore & ColorStoreActions>(
     setAlert: (alert) => set(() => ({ alert })),
 
     setRestart: () => set((e) => setRestart(e)),
+
+    setRow: (row) => set(() => ({ row })),
+    setCol: (col) => set(() => ({ col })),
   })
 );
