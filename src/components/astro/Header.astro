@@ -2,14 +2,19 @@
 import Rating from "../SVG/Rating.astro";
 import Configuration from "../SVG/Configuration.astro";
 import Interrogation from "../SVG/Interrogation.astro";
+import Back from "../SVG/Back.astro";
 import Btn from "../react/Btn";
+
+const url = new URL(Astro.url);
+
+const href = url.pathname === "/" ? "/instructions" : "/";
 ---
 
 <header class="flex justify-center w-full bg-[#fff]">
   <div
     class="flex items-center justify-center sm:w-auto w-full h-[51px] gap-[14px] border-b-[1px] border-[#d3d6da]">
-    <a class="fill-[#878a8c]" href="/rules">
-      <Interrogation />
+    <a class="fill-[#878a8c]" href={href}>
+      {url.pathname === "/" ? <Interrogation /> : <Back />}
     </a>
 
     <h1

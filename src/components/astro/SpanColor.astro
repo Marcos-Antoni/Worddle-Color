@@ -1,0 +1,13 @@
+---
+interface Props {
+  color: string;
+  text: string;
+}
+
+const { color, text } = Astro.props;
+---
+
+<span
+  class={`text-[#fff] px-[5px] rounded-lg`}
+  style={{ backgroundColor: `${color}` }}>{text}</span
+>

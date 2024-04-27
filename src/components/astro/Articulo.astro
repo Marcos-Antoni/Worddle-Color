@@ -1,0 +1,22 @@
+---
+interface Props {
+  titulo: string;
+  h1?: boolean;
+}
+
+const { titulo, h1 } = Astro.props;
+---
+
+<article class="mb-4">
+  {
+    h1 ? (
+      <h1 class="text-2xl font-bold text-center mb-4">{titulo}</h1>
+    ) : (
+      <h2 class="text-xl font-bold mb-2">{titulo}</h2>
+    )
+  }
+  <p class="text-lg mb-2">
+    <slot />
+  </p>
+  <hr class="border-y-[1.5px]" />
+</article>

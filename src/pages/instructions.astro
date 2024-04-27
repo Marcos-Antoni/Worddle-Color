@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Articulo from "../components/astro/Articulo.astro";
+import SpanColor from "src/components/astro/SpanColor.astro";
+---
+
+<Layout title="instructions">
+  <div class="h-[90%] w-full flex justify-center">
+    <div class="max-w-[1000px] w-[80%]">
+      <Articulo titulo="Instructions" h1>
+        Este juego tiene las mismas reglas que el Wordle, solo que con
+        colores hexadecimales en vez de palabras.<br /> Aquí te diré las
+        reglas básicas:
+      </Articulo>
+
+      <Articulo titulo="Colores hexadecimales">
+        Un color hexadecimal es un código de números y letras de la
+        'A' hasta la 'F'. Normalmente es de seis dígitos
+        <SpanColor color="#fc774f" text="#fc774f" />, pero en este
+        juego también se puede con 4 dígitos
+        <SpanColor color="#A87F" text="#A87F" />
+        y 3 dígitos
+        <SpanColor color="#f0c" text="#f0c" />.
+      </Articulo>
+
+      <Articulo titulo="Cómo jugar">
+        El objetivo del juego es adivinar el color hexadecimal que el
+        juego ha elegido. Tienes 6 intentos para adivinarlo, pero en
+        ajustes lo puedes subir a 8 o bajar a 4.
+        <br /><br />
+        Si adivines un dijito en la posicion correcta te apresera este
+        <SpanColor color="#6aaa64" text="color" />.
+        <br />
+        Si adivinas un dijito pero no esta en la posicion correcta te aparecera
+        este
+        <SpanColor color="#ecc40f" text="color" />.
+        <br />
+        Si no adivinas ningun dijito te aparecera este
+        <SpanColor color="#787c7e" text="color" />.
+      </Articulo>
+    </div>
+  </div>
+</Layout>
